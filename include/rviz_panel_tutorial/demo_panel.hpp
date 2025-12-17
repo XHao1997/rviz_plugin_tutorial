@@ -42,6 +42,8 @@
 #include <rviz_common/panel.hpp>
 #include <rviz_common/ros_integration/ros_node_abstraction_iface.hpp>
 #include <std_msgs/msg/string.hpp>
+#include <std_msgs/msg/int8.hpp>
+#include <soil_sensor_interface/msg/soil_pobe_data.hpp>
 
 namespace rviz_panel_tutorial
 {
@@ -56,16 +58,25 @@ public:
 
 protected:
   std::shared_ptr<rviz_common::ros_integration::RosNodeAbstractionIface> node_ptr_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+  rclcpp::Publisher<std_msgs::msg::Int8>::SharedPtr publisher_;
+  rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr subscription_;
+  rclcpp::Subscription<soil_sensor_interface::msg::SoilPobeData>::SharedPtr soil_sub_;
 
-  void topicCallback(const std_msgs::msg::String& msg);
+
+  void topicCallback(const std_msgs::msg::Int8& msg);
 
   QLabel * label_;
+  QLabel * probe_num_;
   QPushButton * button_;
 
 private Q_SLOTS:
-  void buttonActivated();
+  void buttonPlanActivated();
+  void buttonExecuteActivated();
+  void buttonHomeActivated();
+  void buttonSoilPlanActivated();
+  void buttonSoilProbeActivated();
+  void buttonNextCaptureActivated();
+  void buttonMoveBackActivated();
 };
 
 }  // namespace rviz_panel_tutorial

@@ -10,6 +10,8 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>pluginlib</depend>
   <depend>rviz_common</depend>
+  <depend>soil_sensor_interface</depend>
+
 
   <export>
     <build_type>ament_cmake</build_type>

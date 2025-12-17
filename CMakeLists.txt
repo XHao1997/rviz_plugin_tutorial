@@ -4,12 +4,12 @@ project(rviz_panel_tutorial)
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
-
+find_package(rviz_ogre_vendor REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rviz_common REQUIRED)
-
+find_package(soil_sensor_interface REQUIRED)
 set(CMAKE_AUTOMOC ON)
 qt5_wrap_cpp(MOC_FILES
   include/rviz_panel_tutorial/demo_panel.hpp
@@ -23,6 +23,7 @@ target_include_directories(demo_panel PUBLIC
 ament_target_dependencies(demo_panel
   pluginlib
   rviz_common
+  soil_sensor_interface
 )
 install(TARGETS demo_panel
         EXPORT export_rviz_panel_tutorial
